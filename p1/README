@@ -1,0 +1,54 @@
+CS 4280 Project 1
+Choosing to do the 100 point project
+FSA Table and Driver are in scanner.cpp
+Driver is the scan function
+
+--Usage--
+
+Within the project directory use make to compile the source files.
+
+make
+
+The program will create an executable file called "scanner".
+The executable can called in multiple ways show below:
+
+1) Provide a file to the executable
+
+./scanner arg              //substitute your input file name instead of arg
+
+The program will only execute existing files with extension .sp19. You do not have to include the extension (".sp19"),
+while you are using it as an argument, the program will add the extension for you and check for its existence.
+
+2)You can invoke the executable by itself
+
+./scanner
+
+**if you intend to write multiple lines make sure to add a space before going to a new line or else the lineNumber
+count will not function properly**
+This will enable the keyboard entry on the command line. After typing whatever you desire you must
+simulate an EOF call by using [Ctrl] + [D] keys on your keyboard to exit the command line entry.
+
+
+The above call acts as the keyboard entry mentioned in 2, and executes the program successfully.
+--Clean--
+
+The makefile also includes a clean function which removes the executable, object files, and
+if it was used.
+
+make clean
+
+--Existing Problems--
+-P1 mentions/or suggests to only send a token at a time to scanner, but I chose to send the whole file instead
+-Not sure if the 2 filters that were suggested were required but, all the filtering of comments and token are done through
+the scanner function
+-Originally a Five State method (IDTK, NUMTK, DELTK, OPTK, ERR_TK) was implemented but I couldn't figure out how to get
+detect final state without declaring every possible way in the fsa table.
+-Sometimes the recognized keywords pickup a newline character somehow and do not get recognized as a unique token
+-Some of the return functions/ cout function do not display results as intended
+-An Empty file will only return the single EOF token if it has a at the very least a space in the file. A truly empty file
+will be blocked earlier
+-EOF token does not appear when there is no space before EOF due to how the states are set up.
+    > To alleviate this problem I added an extra function in main that adds a space to the end of the file/keyboard inputs
+    > need to add a function to remove the space right before main exits
+-keyboard input option doesnt function as intended, meaning im not sure why some newlines are counted and some are not.
+    >
